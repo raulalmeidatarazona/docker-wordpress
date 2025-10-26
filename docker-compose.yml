@@ -42,7 +42,7 @@ services:
       - WORDPRESS_DB_NAME=wordpress
 
   wpcli:
-    image: wordpress:cli
+    build: ./docker
     depends_on:
       - db
       - wordpress

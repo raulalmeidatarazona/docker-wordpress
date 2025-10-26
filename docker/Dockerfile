@@ -5,7 +5,7 @@ FROM wordpress:latest
 # Install msmtp (lightweight sendmail alternative) and useful tools
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-       msmtp msmtp-mta ca-certificates less nano curl \
+       msmtp msmtp-mta ca-certificates less nano curl nodejs npm sudo \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy msmtp config and PHP override to use msmtp as sendmail
@@ -16,6 +16,8 @@ RUN chmod 600 /etc/msmtprc && chown www-data:www-data /etc/msmtprc
 COPY php-msmtp.ini /usr/local/etc/php/conf.d/zz-msmtp.ini
 # Ensure msmtp logfile exists and is writable by www-data
 RUN touch /var/log/msmtp.log && chown www-data:www-data /var/log/msmtp.log
+
+RUN chown -R www-data:www-data /var/www/html
 
 # Default working directory is the WP root
 WORKDIR /var/www/html

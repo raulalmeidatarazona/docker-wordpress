@@ -13,4 +13,10 @@ logs:
 wp:
 	docker-compose exec wpcli wp $(filter-out $@,$(MAKECMDGOALS))
 
+wp-install:
+	docker-compose exec wpcli sh -c "cd /var/www/html/wp-content/themes/gemini-theme && npm install"
+
+wp-dev:
+	docker-compose exec wpcli sh -c "cd /var/www/html/wp-content/themes/gemini-theme && npm run dev"
+
 .PHONY: up down build logs wp
