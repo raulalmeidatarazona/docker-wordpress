@@ -58,6 +58,7 @@ This project includes a `Makefile` with commands to simplify the management of t
 *   `make build`: Build the Docker images.
 *   `make logs`: Follow the logs of the services.
 *   `make wp`: Execute WP-CLI commands. For example, to list the installed plugins, you can run `make wp plugin list`.
+*   `make dev`: One-shot command that builds images, starts services, installs theme dependencies, and launches the theme dev server.
 
 ## Theme Development
 

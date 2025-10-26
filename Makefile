@@ -19,4 +19,10 @@ wp-install:
 wp-dev:
 	docker-compose exec wpcli sh -c "cd /var/www/html/wp-content/themes/gemini-theme && npm run dev"
 
-.PHONY: up down build logs wp
+dev:
+	$(MAKE) build
+	$(MAKE) up
+	$(MAKE) wp-install
+	$(MAKE) wp-dev
+
+.PHONY: up down build logs wp wp-install wp-dev dev
